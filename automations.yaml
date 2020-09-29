@@ -1,1 +1,16 @@
-[]
+- id: '1601337858401'
+  alias: send iphone notification when snapshots are stale
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.snapshots_stale
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.mobile_app_victor_s_iphone_7
+    data:
+      title: Snapshots are Stale
+      message: Please visit the 'Home Assistant Google Drive Backup ' add-on status
+        page for details.
+  mode: single
