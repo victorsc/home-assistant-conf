@@ -14,3 +14,16 @@
       message: Please visit the 'Home Assistant Google Drive Backup ' add-on status
         page for details.
   mode: single
+- id: '1601830843021'
+  alias: send notification when ha is shutting down
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: shutdown
+  condition: []
+  action:
+  - service: notify.mobile_app_victor_s_iphone_7
+    data:
+      title: Home assistant is shutting down
+      message: Home assistant is shutting down
+  mode: single
