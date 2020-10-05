@@ -27,3 +27,132 @@
       title: Home assistant is shutting down
       message: Home assistant is shutting down
   mode: single
+- id: '1601921325598'
+  alias: Dressing light on
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: a58837be073111ebb435935160464cbc
+    entity_id: binary_sensor.dressing_door_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: a3d53b2201be11ebb038ed0bd676b297
+    entity_id: light.56301471b4e62d5675cb
+    domain: light
+  mode: single
+- id: '1601921352335'
+  alias: Dressing light off
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: a58837be073111ebb435935160464cbc
+    entity_id: binary_sensor.dressing_door_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: a3d53b2201be11ebb038ed0bd676b297
+    entity_id: light.56301471b4e62d5675cb
+    domain: light
+  mode: single
+- id: '1601921511171'
+  alias: Bedroom light Aurelie
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: c2de4be2067211eb868951b899c5ca20
+    type: action
+    subtype: single_left
+    discovery_id: 0x00158d000421f159 action_single_left
+  - platform: device
+    domain: mqtt
+    device_id: c2de4be2067211eb868951b899c5ca20
+    type: click
+    subtype: both
+    discovery_id: 0x00158d000421f159 click_both
+  condition: []
+  action:
+  - type: toggle
+    device_id: a3e76e0b01be11eba70927d7cec6c237
+    entity_id: light.5058740184f3ebd05dfd
+    domain: light
+  mode: single
+- id: '1601921547978'
+  alias: Bedroom light Victor
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: c2de4be2067211eb868951b899c5ca20
+    type: action
+    subtype: single_right
+    discovery_id: 0x00158d000421f159 action_single_right
+  - platform: device
+    domain: mqtt
+    device_id: c2de4be2067211eb868951b899c5ca20
+    type: click
+    subtype: both
+    discovery_id: 0x00158d000421f159 click_both
+  condition: []
+  action:
+  - type: toggle
+    device_id: a3da4cdd01be11eb925abbb96d1f2bb5
+    entity_id: light.5058740184f3ebd0613c
+    domain: light
+  mode: single
+- id: '1601921835170'
+  alias: '[Office] light strip decrease'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: fb5acc2a066f11eb8782ab347bdf11a0
+    type: action
+    subtype: rotate_left
+    discovery_id: 0x00158d00042d6e36 action_rotate_left
+  condition: []
+  action:
+  - type: brightness_decrease
+    device_id: a3ebeffb01be11ebaec2cbdc41234aa6
+    entity_id: light.light_strip
+    domain: light
+  mode: single
+- id: '1601921944625'
+  alias: '[Office] Light strip increase'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: fb5acc2a066f11eb8782ab347bdf11a0
+    type: action
+    subtype: rotate_right
+    discovery_id: 0x00158d00042d6e36 action_rotate_right
+  condition: []
+  action:
+  - type: brightness_increase
+    device_id: a3ebeffb01be11ebaec2cbdc41234aa6
+    entity_id: light.light_strip
+    domain: light
+  mode: single
+- id: '1601922303700'
+  alias: '[Office] Light strip toggle'
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: fb5acc2a066f11eb8782ab347bdf11a0
+    type: action
+    subtype: slide
+    discovery_id: 0x00158d00042d6e36 action_slide
+  condition: []
+  action:
+  - type: toggle
+    device_id: a3ebeffb01be11ebaec2cbdc41234aa6
+    entity_id: light.light_strip
+    domain: light
+  mode: single
