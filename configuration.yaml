@@ -11,12 +11,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-tuya:
-  username: !secret tuya_user
-  password: !secret tuya_pass
-  country_code: "33"
-  platform: "smart_life"
-      
 meteo_france:
   - city: '06600'
 
@@ -25,22 +19,12 @@ vacuum:
     host: 10.0.4.126
     token: !secret vacuum_token
     
-discovery:
-  ignore:
-    - yeelight
-    
-yeelight:
-  devices:
-    10.0.4.21:
-      name: Big balcony light
-      model: color2
-    10.0.4.117:
-      name: Light strip
-      model: strip1
-    10.0.4.12:
-      name: Front balcony light
-      model: color2
-
 binary_sensor:
   - platform: workday
     country: FRA
+    
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_id

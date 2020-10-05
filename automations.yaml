@@ -11,7 +11,7 @@
   - service: notify.mobile_app_victor_s_iphone_7
     data:
       title: Snapshots are Stale
-      message: Please visit the 'Home Assistant Google Drive Backup ' add-on status
+      message: Please visit the 'Home Assistant Google Drive Backup' add-on status
         page for details.
   mode: single
 - id: '1601830843021'
@@ -155,4 +155,30 @@
     device_id: a3ebeffb01be11ebaec2cbdc41234aa6
     entity_id: light.light_strip
     domain: light
+  mode: single
+- id: '1601922303793'
+  alias: Log states
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - light.light_strip
+    - light.56301471b4e62d5675cb
+    - light.5058740184f3ebd05dfd
+    - light.5058740184f3ebd0613c
+    - light.big_balcony_light
+    - binary_sensor.dressing_door_contact
+    - binary_sensor.b_balcony_living_room_contact
+    - binary_sensor.balcony_kitchen_door_contact
+    - binary_sensor.bedroom_balcony_door_contact
+    - binary_sensor.f_balcony_living_room_left_contact
+    - binary_sensor.f_balcony_living_room_right_contact
+
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: '{{ state_attr(trigger.entity_id, ''friendly_name'') }} changed to
+        {{trigger.to_state.state}}'
+      parse_mode: html
   mode: single
