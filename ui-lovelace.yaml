@@ -1,0 +1,90 @@
+title: Home
+views:
+  - path: default_view
+    title: Home
+    cards:
+      - type: entities
+        entities:
+          - cover.16236476a4cf12b18999
+          - cover.61438062ecfabc68eee4
+          - cover.05871234b4e62d79b938
+        title: Cover
+      - type: entities
+        entities:
+          - light.5058740184f3ebd05dfd
+          - light.5058740184f3ebd0613c
+          - light.big_balcony_light
+          - light.56301471b4e62d5675cb
+          - entity: light.light_strip
+            name: strip
+        title: Lights
+        state_color: true
+      - type: entities
+        entities:
+          - vacuum.xiaomi_vacuum_cleaner
+        title: Vacuum
+      - type: entities
+        entities:
+          - entity: binary_sensor.balcony_kitchen_door_contact
+          - entity: binary_sensor.f_balcony_living_room_left_contact
+          - entity: binary_sensor.f_balcony_living_room_right_contact
+          - entity: binary_sensor.b_balcony_living_room_contact
+          - entity: binary_sensor.bedroom_balcony_door_contact
+          - entity: binary_sensor.dressing_door_contact
+        title: Doors
+      - type: entities
+        entities:
+          - entity: weather.antibes
+          - entity: sensor.outside_temp_temperature
+          - entity: sensor.living_room_temp_temperature
+          - entity: sensor.bedroom_temp_temperature
+          - entity: sensor.guestroom_temp_temperature
+          - entity: sensor.server_temp_temperature
+        title: Temperature
+        state_color: false
+      - type: weather-forecast
+        entity: weather.antibes
+  - title: Entity status
+    path: entity-status
+    icon: ''
+    badges:
+      - entity: automation.bedroom_light_aurelie
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.0x00158d00042d6e36_battery
+          - entity: sensor.b_balcony_living_room_battery
+          - entity: sensor.balcony_kitchen_door_battery
+          - entity: sensor.f_balcony_living_room_left_battery
+          - entity: sensor.f_balcony_living_room_right_battery
+          - entity: sensor.bedroom_balcony_door_battery
+          - entity: sensor.dressing_door_battery
+          - entity: sensor.guestroom_temp_battery
+          - entity: sensor.outside_temp_battery
+          - entity: sensor.server_temp_battery
+          - entity: sensor.living_room_temp_battery
+          - entity: sensor.bedroom_temp_battery
+          - entity: sensor.entry_movement_battery
+          - entity: sensor.living_room_movement_battery
+          - entity: sensor.button_switch_battery
+          - entity: sensor.double_bedroom_switch_battery
+        title: Battery status
+      - type: entities
+        entities:
+          - entity: sensor.0x00158d00042d6e36_linkquality
+          - entity: sensor.b_balcony_living_room_linkquality
+          - entity: sensor.balcony_kitchen_door_linkquality
+          - entity: sensor.f_balcony_living_room_left_linkquality
+          - entity: sensor.f_balcony_living_room_right_linkquality
+          - entity: sensor.bedroom_balcony_door_linkquality
+          - entity: sensor.dressing_door_linkquality
+          - entity: sensor.guestroom_temp_linkquality
+          - entity: sensor.outside_temp_linkquality
+          - entity: sensor.server_temp_linkquality
+          - entity: sensor.living_room_temp_linkquality
+          - entity: sensor.bedroom_temp_linkquality
+          - entity: sensor.entry_movement_linkquality
+          - entity: sensor.living_room_movement_linkquality
+          - entity: sensor.button_switch_linkquality
+          - entity: sensor.double_bedroom_switch_linkquality
+        title: Link status
