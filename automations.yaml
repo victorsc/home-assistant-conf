@@ -157,7 +157,7 @@
     domain: light
   mode: single
 - id: '1601922303793'
-  alias: Log states
+  alias: '[LOG] States'
   description: ''
   trigger:
   - platform: state
@@ -173,12 +173,16 @@
     - binary_sensor.bedroom_balcony_door_contact
     - binary_sensor.f_balcony_living_room_left_contact
     - binary_sensor.f_balcony_living_room_right_contact
-
-  condition: []
+    - vacuum.xiaomi_vacuum_cleaner
+    - cover.05871234b4e62d79b938
+    - cover.16236476a4cf12b18999
+    - cover.61438062ecfabc68eee4
+  condition: "{{ trigger.from_state.state != trigger.to_state.state }}"
   action:
   - service: telegram_bot.send_message
     data:
-      message: '{{ state_attr(trigger.entity_id, ''friendly_name'') }} changed to
-        {{trigger.to_state.state}}'
+      title: '<b>{{ state_attr(trigger.entity_id, ''friendly_name'') }}</b>'
+      message: '<b>{{trigger.from_state.state.upper()}}</b> &#x27A1; <b>{{trigger.to_state.state.upper()}}</b>'
       parse_mode: html
-  mode: single
+  mode: queued
+  max: 10
