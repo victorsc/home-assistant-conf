@@ -16,7 +16,7 @@ meteo_france:
 
 vacuum:
   - platform: xiaomi_miio
-    host: 10.0.4.126
+    host: !secret vacuum_ip
     token: !secret vacuum_token
     
 binary_sensor:
@@ -31,3 +31,12 @@ telegram_bot:
 
 lovelace:
   mode: yaml
+
+influxdb:
+  host: !secret influxdb_ip
+  port: !secret influxdb_port
+  database: homeassistant
+  username: !secret influxdb_ha_user
+  password: !secret influxdb_ha_pass
+  max_retries: 3
+  default_measurement: state
