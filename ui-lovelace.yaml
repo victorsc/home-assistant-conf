@@ -15,6 +15,7 @@ views:
           - light.5058740184f3ebd0613c
           - light.big_balcony_light
           - light.56301471b4e62d5675cb
+          - light.f_balcony_light
           - entity: light.light_strip
             name: strip
         title: Lights
