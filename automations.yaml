@@ -177,12 +177,82 @@
     - cover.05871234b4e62d79b938
     - cover.16236476a4cf12b18999
     - cover.61438062ecfabc68eee4
-  condition: "{{ trigger.from_state.state != trigger.to_state.state }}"
+  condition: '{{ trigger.from_state.state != trigger.to_state.state }}'
   action:
   - service: telegram_bot.send_message
     data:
-      title: '<b>{{ state_attr(trigger.entity_id, ''friendly_name'') }}</b>'
-      message: '<b>{{trigger.from_state.state.upper()}}</b> &#x27A1; <b>{{trigger.to_state.state.upper()}}</b>'
+      title: <b>{{ state_attr(trigger.entity_id, 'friendly_name') }}</b>
+      message: <b>{{trigger.from_state.state.upper()}}</b> &#x27A1; <b>{{trigger.to_state.state.upper()}}</b>
       parse_mode: html
   mode: queued
   max: 10
+- id: '1602438011912'
+  alias: '[F Balcony] Light off'
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 23bc1f5e067a11ebbd86971d353d6d34
+    entity_id: binary_sensor.f_balcony_living_room_right_contact
+    domain: binary_sensor
+  - type: not_opened
+    platform: device
+    device_id: 0366831d068d11eb80b7cdda1350d8d3
+    entity_id: binary_sensor.f_balcony_living_room_left_contact
+    domain: binary_sensor
+  - type: not_opened
+    platform: device
+    device_id: 21030d46067411eba1f59ffc283f619a
+    entity_id: binary_sensor.balcony_kitchen_door_contact
+    domain: binary_sensor
+  condition:
+  - type: is_not_open
+    condition: device
+    device_id: 0366831d068d11eb80b7cdda1350d8d3
+    entity_id: binary_sensor.f_balcony_living_room_left_contact
+    domain: binary_sensor
+  - type: is_not_open
+    condition: device
+    device_id: 23bc1f5e067a11ebbd86971d353d6d34
+    entity_id: binary_sensor.f_balcony_living_room_right_contact
+    domain: binary_sensor
+  - type: is_not_open
+    condition: device
+    device_id: 21030d46067411eba1f59ffc283f619a
+    entity_id: binary_sensor.balcony_kitchen_door_contact
+    domain: binary_sensor
+  action:
+  - type: turn_off
+    device_id: e2377ce908ce11ebbb0d5b7554271007
+    entity_id: light.f_balcony_light
+    domain: light
+  mode: single
+- id: '1602438663052'
+  alias: '[F Balcony] Light on'
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 23bc1f5e067a11ebbd86971d353d6d34
+    entity_id: binary_sensor.f_balcony_living_room_right_contact
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 0366831d068d11eb80b7cdda1350d8d3
+    entity_id: binary_sensor.f_balcony_living_room_left_contact
+    domain: binary_sensor
+  - type: opened
+    platform: device
+    device_id: 21030d46067411eba1f59ffc283f619a
+    entity_id: binary_sensor.balcony_kitchen_door_contact
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - type: turn_on
+    device_id: e2377ce908ce11ebbb0d5b7554271007
+    entity_id: light.f_balcony_light
+    domain: light
+  mode: single
