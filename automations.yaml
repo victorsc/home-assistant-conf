@@ -256,3 +256,51 @@
     entity_id: light.f_balcony_light
     domain: light
   mode: single
+- id: '1602787842944'
+  alias: '[B Balcony] Light on'
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 484b6ad2073011ebbb02f50aa302cd60
+    entity_id: binary_sensor.b_balcony_living_room_contact
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - type: turn_on
+    device_id: a3edc5e701be11eba3fcbb232feb3034
+    entity_id: light.big_balcony_light
+    domain: light
+  mode: single
+- id: '1602787872256'
+  alias: '[B Balcony] Light off'
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 484b6ad2073011ebbb02f50aa302cd60
+    entity_id: binary_sensor.b_balcony_living_room_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: a3edc5e701be11eba3fcbb232feb3034
+    entity_id: light.big_balcony_light
+    domain: light
+  mode: single
+- id: '1603667340863'
+  alias: '[F Balcony] Light good night'
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:10
+  condition: []
+  action:
+  - type: turn_off
+    device_id: e2377ce908ce11ebbb0d5b7554271007
+    entity_id: light.f_balcony_light
+    domain: light
+  mode: single
