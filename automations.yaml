@@ -166,6 +166,7 @@
     - light.56301471b4e62d5675cb
     - light.5058740184f3ebd05dfd
     - light.5058740184f3ebd0613c
+    - light.f_balcony_light
     - light.big_balcony_light
     - binary_sensor.dressing_door_contact
     - binary_sensor.b_balcony_living_room_contact
@@ -177,7 +178,9 @@
     - cover.05871234b4e62d79b938
     - cover.16236476a4cf12b18999
     - cover.61438062ecfabc68eee4
-  condition: '{{ trigger.from_state.state != trigger.to_state.state }}'
+  condition:
+  - condition: template
+    value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
   action:
   - service: telegram_bot.send_message
     data:
@@ -296,11 +299,28 @@
   description: ''
   trigger:
   - platform: time
-    at: 00:10
+    at: 00:10:00
   condition: []
   action:
   - type: turn_off
     device_id: e2377ce908ce11ebbb0d5b7554271007
     entity_id: light.f_balcony_light
+    domain: light
+  mode: single
+- id: '1604491158725'
+  alias: Tag bedroom lights is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: f4457af1-92f6-4911-8ded-c4b2ba27b0ad
+  condition: []
+  action:
+  - type: toggle
+    device_id: a3da4cdd01be11eb925abbb96d1f2bb5
+    entity_id: light.5058740184f3ebd0613c
+    domain: light
+  - type: toggle
+    device_id: a3e76e0b01be11eba70927d7cec6c237
+    entity_id: light.5058740184f3ebd05dfd
     domain: light
   mode: single
