@@ -32,6 +32,7 @@ views:
           - entity: binary_sensor.b_balcony_living_room_contact
           - entity: binary_sensor.bedroom_balcony_door_contact
           - entity: binary_sensor.dressing_door_contact
+          - entity: binary_sensor.home_entrance_contact
         title: Doors
       - type: entities
         entities:
