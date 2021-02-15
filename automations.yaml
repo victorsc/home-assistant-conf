@@ -168,6 +168,7 @@
     - light.5058740184f3ebd0613c
     - light.f_balcony_light
     - light.big_balcony_light
+    - light.home_entrance_light
     - binary_sensor.dressing_door_contact
     - binary_sensor.b_balcony_living_room_contact
     - binary_sensor.balcony_kitchen_door_contact
