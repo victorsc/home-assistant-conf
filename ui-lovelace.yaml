@@ -43,6 +43,7 @@ views:
           - entity: sensor.bedroom_temp_temperature
           - entity: sensor.guestroom_temp_temperature
           - entity: sensor.server_temp_temperature
+          - entity: sensor.bathroom_temperature_temperature
         title: Temperature
         state_color: false
       - type: weather-forecast
@@ -50,8 +51,6 @@ views:
   - title: Entity status
     path: entity-status
     icon: ''
-    badges:
-      - entity: automation.bedroom_light_aurelie
     cards:
       - type: entities
         entities:
@@ -67,6 +66,7 @@ views:
           - entity: sensor.server_temp_battery
           - entity: sensor.living_room_temp_battery
           - entity: sensor.bedroom_temp_battery
+          - entity: sensor.bathroom_temperature_battery
           - entity: sensor.entry_movement_battery
           - entity: sensor.living_room_movement_battery
           - entity: sensor.button_switch_battery
@@ -86,6 +86,7 @@ views:
           - entity: sensor.server_temp_linkquality
           - entity: sensor.living_room_temp_linkquality
           - entity: sensor.bedroom_temp_linkquality
+          - entity: sensor.bathroom_temperature_linkquality
           - entity: sensor.entry_movement_linkquality
           - entity: sensor.living_room_movement_linkquality
           - entity: sensor.button_switch_linkquality
