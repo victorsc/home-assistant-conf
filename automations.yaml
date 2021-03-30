@@ -326,3 +326,13 @@
     entity_id: light.5058740184f3ebd05dfd
     domain: light
   mode: single
+- id: '1614210585933'
+  alias: Lightstrip on movement
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      no_motion_wait: '120'
+      motion_entity: binary_sensor.entry_movement_occupancy
+      light_target:
+        device_id: fb9cb021b74bd799f5b6ed9b32715d6f
